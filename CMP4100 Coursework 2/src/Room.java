@@ -17,6 +17,7 @@ public class Room {
 		this.roomHasBalcony = roomHasBalcony;
 		this.roomHasLounge = roomHasLounge;
 		this.reserveID = reserveID;
+		this.userPass = userPass;
 	}
 
 	public String printString() {
@@ -60,11 +61,11 @@ public class Room {
 	}
 	
 	public void setUserPass(String userPass) {
-		
+		this.userPass = userPass;
 	}
 	
-	public void getUserPass() {
-		
+	public String getUserPass() {
+		return userPass;
 	}
 
 }
