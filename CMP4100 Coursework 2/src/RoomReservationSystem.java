@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-//TEST
+
 public class RoomReservationSystem {
 	// Static variables that are used throughout the entire program
 	static Scanner console = new Scanner(System.in);
@@ -278,4 +278,4 @@ public class RoomReservationSystem {
 	}
 
 
-}hi ste
+}
