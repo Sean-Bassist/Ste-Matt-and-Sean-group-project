@@ -22,7 +22,7 @@ public class Room {
 
 	public String printString() {
 		return roomNumber + " " + roomType + " " + roomPrice + " " + roomHasBalcony + " " + roomHasLounge + " "
-				+ reserveID;
+				+ reserveID + " " + userPass;
 	}
 
 	@Override

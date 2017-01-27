@@ -1,11 +1,11 @@
 import java.io.*;
 import java.util.*;
-boop
+
 public class RoomReservationSystem {
 	// Static variables that are used throughout the entire program
 	static Scanner console = new Scanner(System.in);
 	static ArrayList<Room> roomList = new ArrayList<Room>();
-	static String filePath = "m:\\data\\rooms.txt";
+	static String filePath = "m:\\data\\room.txt";
 	
 	public static void main(String[] args) throws IOException {
 		loadRooms();
@@ -173,8 +173,10 @@ public class RoomReservationSystem {
 				}
 			} while (!roomList.get(userRoomChoice).getReserveID().equalsIgnoreCase("N/A"));
 			userChoice = getUserVerification();
-			if (userChoice.equalsIgnoreCase("Y")) {
+			System.out.printf("Please enter a four digit security number: ");
+			if (userChoice.equalsIgnoreCase("Y")) {		
 				roomList.get(userRoomChoice).setReserveID(userEmail);
+				roomList.get(userRoomChoice).setUserPass(console.next());
 				System.out.printf("Your room has been reserved!\n");
 			} else if (userChoice.equalsIgnoreCase("N")) {
 				System.out.printf("Room Reservation Canceled!\n");
@@ -191,6 +193,7 @@ public class RoomReservationSystem {
 		String userChoice;
 		int userRoomChoice = 0;
 		int counter = 0;
+		String userPasscode;
 		System.out.printf("Please enter you email!\n");
 		System.out.printf("Email: ");
 		userID = console.next();
@@ -225,11 +228,17 @@ public class RoomReservationSystem {
 				}
 			} while (!roomList.get(userRoomChoice).getReserveID().equalsIgnoreCase(userID));
 			userChoice = getUserVerification();
-			if (userChoice.equalsIgnoreCase("Y")) {
-				roomList.get(userRoomChoice).setReserveID("N/A");
-				System.out.printf("Reservation Canceled\n");
-			} else if (userChoice.equalsIgnoreCase("N")) {
-				System.out.printf("Room not canceled!\n");
+			System.out.printf("Please enter the four digit code you chose when you reservered the room.\n");
+			userPasscode = console.next();
+			if (userPasscode.equals(roomList.get(userRoomChoice).getUserPass())){
+				if (userChoice.equalsIgnoreCase("Y")) {
+					roomList.get(userRoomChoice).setReserveID("N/A");
+					System.out.printf("Reservation Canceled\n");
+				} else if (userChoice.equalsIgnoreCase("N")) {
+					System.out.printf("Room not canceled!\n");
+				}
+			} else {
+				System.out.printf("The passcode you entered didn't match the one we have.\nPlease try again.\n\n");
 			}
 		} else {
 			System.out.printf("No rooms matching you Email were found.\n");
